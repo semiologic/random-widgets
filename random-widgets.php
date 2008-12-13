@@ -5,7 +5,7 @@ Plugin URI: http://www.semiologic.com/software/widgets/random-widgets/
 Description: WordPress widgets that let you list random selections of posts, pages, links, or comments.
 Author: Denis de Bernardy
 Version: 2.1
-Author URI: http://www.semiologic.com
+Author URI: http://www.getsemiologic.com
 Update Service: http://version.semiologic.com/wordpress
 Update Tag: random_widgets
 Update Package: http://www.semiologic.com/media/software/widgets/random-widgets/random-widgets.zip
