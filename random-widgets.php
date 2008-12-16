@@ -4,7 +4,7 @@ Plugin Name: Random Widgets
 Plugin URI: http://www.semiologic.com/software/widgets/random-widgets/
 Description: WordPress widgets that let you list random selections of posts, pages, links, or comments.
 Author: Denis de Bernardy
-Version: 2.1
+Version: 2.1.1 alpha
 Author URI: http://www.getsemiologic.com
 Update Service: http://version.semiologic.com/plugins
 Update Tag: random_widgets
@@ -240,7 +240,7 @@ class random_widgets
 		{
 			if ( isset($page_filters[$options['filter']]) )
 			{
-				$parent_sql = $page_filters[$options['filter']];
+				$parents_sql = $page_filters[$options['filter']];
 			}
 			else
 			{
@@ -257,13 +257,7 @@ class random_widgets
 						FROM	$wpdb->posts as posts
 						WHERE	posts.post_status = 'publish'
 						AND		posts.post_type = 'page'
-						AND		posts.ID IN ( $parents_sql )
-						UNION
-						SELECT	posts.ID
-						FROM	$wpdb->posts as posts
-						WHERE	posts.post_status = 'publish'
-						AND		posts.post_type = 'page'
-						AND		posts.post_parent IN ( $parents_sql )
+						AND		( posts.ID IN ( $parents_sql ) OR posts.post_parent IN ( $parents_sql ) )
 						");
 					
 					sort($parents);
@@ -272,7 +266,7 @@ class random_widgets
 				$page_filters[$options['filter']] = $parents_sql;
 			}
 		}
-
+		
 		$items_sql = "
 			SELECT	posts.*,
 					COALESCE(post_label.meta_value, post_title) as post_label,
@@ -299,7 +293,7 @@ class random_widgets
 			ORDER BY RAND()
 			LIMIT " . intval($options['amount'])
 			;
-
+		
 		$items = (array) $wpdb->get_results($items_sql);
 
 		update_post_cache($items);
