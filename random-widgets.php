@@ -6,7 +6,7 @@ Description: WordPress widgets that let you list random selections of posts, pag
 Version: 2.1.2 alpha
 Author: Denis de Bernardy
 Author URI: http://www.getsemiologic.com
-Update Package: https://members.semiologic.com/media/plugins/random-widgets.zip
+Update Package: https://members.semiologic.com/media/plugins/random-widgets/random-widgets.zip
 */
 
 /*
