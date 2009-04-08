@@ -206,7 +206,7 @@ class random_widgets
 			$items[$key]->item_label = '<a href="'
 				. htmlspecialchars(apply_filters('the_permalink', get_permalink($items[$key]->ID)))
 				. '">'
-				. $items[$key]->post_label
+				. ( $items[$key]->post_label ? $items[$key]->post_label : __('Untitled') )
 				. '</a>'
 				. ( $options['desc'] && $items[$key]->post_desc
 					? wpautop($items[$key]->post_desc)
@@ -300,7 +300,7 @@ class random_widgets
 			$items[$key]->item_label = '<a href="'
 				. htmlspecialchars(apply_filters('the_permalink', get_permalink($items[$key]->ID)))
 				. '">'
-				. $items[$key]->post_label
+				. ( $items[$key]->post_label ? $items[$key]->post_label : __('Untitled') )
 				. '</a>'
 				. ( $options['desc'] && $items[$key]->post_desc
 					? wpautop($items[$key]->post_desc)
@@ -348,7 +348,7 @@ class random_widgets
 			$items[$key]->item_label = '<a href="'
 				. htmlspecialchars($items[$key]->link_url)
 				. '">'
-				. $items[$key]->link_name
+				. ( $items[$key]->post_label ? $items[$key]->post_label : __('Untitled') )
 				. '</a>'
 				. ( $options['desc'] && $items[$key]->link_description
 					? ( wpautop($items[$key]->link_description) )
@@ -407,7 +407,7 @@ class random_widgets
 				. '<a href="'
 				. htmlspecialchars(apply_filters('the_permalink', get_permalink($items[$key]->ID)) . '#comment-' . $items[$key]->comment_ID)
 				. '">'
-				. 	$items[$key]->post_label
+				. 	( $items[$key]->post_label ? $items[$key]->post_label : __('Untitled') )
 					. '</a>';
 		}
 
@@ -458,7 +458,7 @@ class random_widgets
 			$items[$key]->item_label = '<a href="'
 				. htmlspecialchars(apply_filters('the_permalink', get_permalink($items[$key]->ID)))
 				. '">'
-				. $items[$key]->post_label
+				. ( $items[$key]->post_label ? $items[$key]->post_label : __('Untitled') )
 				. '</a>'
 				. ( $options['desc'] && $items[$key]->post_desc
 					? wpautop($items[$key]->post_desc)
