@@ -204,7 +204,7 @@ class random_widgets_admin
 			. '<div style="width: 330px; float: right;">'
 			. '<input style="width: 320px;"'
 			. ' id="random-widget-title-' . $number . '" name="random-widget[' . $number . '][title]"'
-			. ' type="text" value="' . attribute_escape($title) . '"'
+			. ' type="text" value="' . esc_attr($title) . '"'
 			. ' />'
 			. '</div>'
 			. '<div style="clear: both;"></div>'
@@ -250,7 +250,7 @@ class random_widgets_admin
 					: ''
 					)
 				. '>'
-				. __('Posts', 'random-widgets') . ' / ' . attribute_escape($option->label)
+				. __('Posts', 'random-widgets') . ' / ' . esc_attr($option->label)
 				. '</option>';
 		}
 
@@ -276,7 +276,7 @@ class random_widgets_admin
 					: ''
 					)
 				. '>'
-				. __('Pages', 'random-widgets') . ' / ' . attribute_escape($option->label)
+				. __('Pages', 'random-widgets') . ' / ' . esc_attr($option->label)
 				. '</option>';
 		}
 
@@ -302,7 +302,7 @@ class random_widgets_admin
 					: ''
 					)
 				. '>'
-				. __('Links', 'random-widgets') . ' / ' . attribute_escape($option->label)
+				. __('Links', 'random-widgets') . ' / ' . esc_attr($option->label)
 				. '</option>';
 		}
 
