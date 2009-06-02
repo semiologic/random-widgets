@@ -2,7 +2,7 @@
 /*
 Plugin Name: Random Widgets
 Plugin URI: http://www.semiologic.com/software/random-widgets/
-Description: WordPress widgets that let you list random posts or pages.
+Description: WordPress widgets that let you list random posts, pages, links or comments.
 Version: 3.0 RC
 Author: Denis de Bernardy
 Author URI: http://www.getsemiologic.com
@@ -29,14 +29,10 @@ if ( !defined('widget_utils_textdomain') )
 /**
  * random_widget
  *
- * @package Related Widgets
+ * @package Random Widgets
  **/
 
-if ( version_compare(mysql_get_server_info(), '4.1', '<') ) {
-	add_action('admin_notices', array('random_widget', 'mysql_warning'));
-} else {
-	add_action('widgets_init', array('random_widget', 'widgets_init'));
-}
+add_action('widgets_init', array('random_widget', 'widgets_init'));
 
 foreach ( array('post.php', 'post-new.php', 'page.php', 'page-new.php') as $hook )
 	add_action('load-' . $hook, array('random_widget', 'editor_init'));
@@ -44,21 +40,6 @@ foreach ( array('post.php', 'post-new.php', 'page.php', 'page-new.php') as $hook
 add_action('save_post', array('random_widget', 'save_post'));
 
 class random_widget extends WP_Widget {
-	/**
-	 * mysql_warning()
-	 *
-	 * @return void
-	 **/
-	
-	function mysql_warning() {
-		echo '<div class="error">'
-			. '<p><strong>' . __('Random Widgets Error', 'random-widgets') . '</strong><br />' . "\n"
-			. sprintf(__('Your MySQL version is lower than 4.1. It\'s time to <a href="%s">change hosts</a> if yours doesn\'t want to upgrade.', 'random-widgets'), 'http://www.semiologic.com/resources/wp-basics/wordpress-server-requirements/')
-			. '</p>'
-			. '</div>' . "\n";
-	} # mysql_warning()
-	
-	
 	/**
 	 * editor_init()
 	 *
@@ -109,7 +90,7 @@ class random_widget extends WP_Widget {
 	function random_widget() {
 		$widget_ops = array(
 			'classname' => 'random_widget',
-			'description' => __("Random Posts or Pages.", 'random-widgets'),
+			'description' => __("Random Posts, Pages, Links or Comments.", 'random-widgets'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -239,10 +220,10 @@ class random_widget extends WP_Widget {
 			echo '<li>'
 				. $label;
 				
-				if ( $descr )
-					echo "\n\n" . wpautop($descr);
-				
-				echo '</li>' . "\n";
+			if ( $descr )
+				echo "\n\n" . wpautop($descr);
+			
+			echo '</li>' . "\n";
 		}
 		
 		echo '</ul>' . "\n";
@@ -262,7 +243,7 @@ class random_widget extends WP_Widget {
 	function get_pages($post_id, $instance) {
 		global $wpdb;
 		extract($instance, EXTR_SKIP);
-		$amount = min(5, max(15, intval($amount)));
+		$amount = min(max((int) $amount, 1), 10);
 		
 		$items_sql = "
 				SELECT	post.*
@@ -282,16 +263,15 @@ class random_widget extends WP_Widget {
 				";
 		}
 		
-		$exclude_sql = "
-				SELECT	post_id
-				FROM	$wpdb->postmeta
-				WHERE	meta_key = '_widgets_exclude'
-				";
+		$items_sql .= "
+				LEFT JOIN $wpdb->postmeta as widgets_exclude
+				ON		widgets_exclude.post_id = post.ID
+				AND		widgets_exclude.meta_key = '_widgets_exclude'";
 		
 		$items_sql .= "
 				WHERE	post.post_status = 'publish'
 				AND		post.post_type = 'page'
-				AND		post.ID NOT IN ( $exclude_sql )";
+				AND		widgets_exclude.post_id IS NULL";
 		
 		if ( $post_id ) {
 			$items_sql .= "
@@ -326,7 +306,7 @@ class random_widget extends WP_Widget {
 	function get_posts($post_id, $instance) {
 		global $wpdb;
 		extract($instance, EXTR_SKIP);
-		$amount = min(5, max(15, intval($amount)));
+		$amount = min(max((int) $amount, 1), 10);
 		
 		$items_sql = "
 				SELECT	post.*
@@ -344,16 +324,15 @@ class random_widget extends WP_Widget {
 				AND		filter_tt.taxonomy = 'category'";
 		}
 		
-		$exclude_sql = "
-				SELECT	post_id
-				FROM	$wpdb->postmeta
-				WHERE	meta_key = '_widgets_exclude'
-				";
+		$items_sql .= "
+				LEFT JOIN $wpdb->postmeta as widgets_exclude
+				ON		widgets_exclude.post_id = post.ID
+				AND		widgets_exclude.meta_key = '_widgets_exclude'";
 		
 		$items_sql .= "
 				WHERE	post.post_status = 'publish'
 				AND		post.post_type = 'post'
-				AND		post.ID NOT IN ( $exclude_sql )";
+				AND		widgets_exclude.post_id IS NULL";
 		
 		if ( $post_id ) {
 			$items_sql .= "
@@ -387,7 +366,7 @@ class random_widget extends WP_Widget {
 	function get_links($instance) {
 		global $wpdb;
 		extract($instance, EXTR_SKIP);
-		$amount = min(5, max(15, intval($amount)));
+		$amount = min(max((int) $amount, 1), 10);
 		
 		$items_sql = "
 				SELECT	link.*
@@ -430,7 +409,7 @@ class random_widget extends WP_Widget {
 	function get_updates($post_id, $instance) {
 		global $wpdb;
 		extract($instance, EXTR_SKIP);
-		$amount = min(5, max(15, intval($amount)));
+		$amount = min(max((int) $amount, 1), 10);
 		
 		$items_sql = "
 				SELECT	post.*
@@ -478,10 +457,9 @@ class random_widget extends WP_Widget {
 	 **/
 
 	function get_comments($post_id, $instance) {
-		
 		global $wpdb;
 		extract($instance, EXTR_SKIP);
-		$amount = min(5, max(15, intval($amount)));
+		$amount = min(max((int) $amount, 1), 10);
 		
 		$items_sql = "
 				SELECT	post.*,
@@ -499,6 +477,7 @@ class random_widget extends WP_Widget {
 				WHERE	post.post_status = 'publish'
 				AND		post.post_type IN ( 'post', 'page' )
 				AND		post.post_password = ''
+				AND		comment.comment_approved = '1'
 				AND		widgets_exclude.post_id IS NULL";
 		
 		if ( $post_id ) {
@@ -507,6 +486,7 @@ class random_widget extends WP_Widget {
 		}
 		
 		$items_sql .= "
+				GROUP BY post.ID
 				ORDER BY RAND()
 				LIMIT $amount
 				";
@@ -535,7 +515,7 @@ class random_widget extends WP_Widget {
 		$instance = random_widget::defaults();
 		
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['amount'] = min(max(intval($new_instance['amount']), 5), 15);
+		$instance['amount'] = min(max((int) $new_instance['amount'], 1), 10);
 		$instance['desc'] = isset($new_instance['desc']);
 		
 		$type_filter = explode('-', $new_instance['type_filter']);
@@ -624,7 +604,7 @@ class random_widget extends WP_Widget {
 		
 		echo '</optgroup>' . "\n";
 		
-		echo '<optgroup label="' . __('Posts', 'random-widgets') . '">' . "\n"
+		echo '<optgroup label="' . __('Pages', 'random-widgets') . '">' . "\n"
 			. '<option value="pages"' . selected($type == 'pages' && !$filter, true, false) . '>'
 			. __('Random Pages / All Sections', 'random-widgets')
 			. '</option>' . "\n";
@@ -669,7 +649,7 @@ class random_widget extends WP_Widget {
 		
 		echo '<p>'
 			. '<label>'
-			. sprintf(__('%s Random Items (5-15)', 'random-widgets'),
+			. sprintf(__('%s Random Items', 'random-widgets'),
 				'<input type="text" size="3" name="' . $this->get_field_name('amount') . '"'
 					. ' value="' . intval($amount) . '"'
 					. ' />')
@@ -739,11 +719,19 @@ class random_widget extends WP_Widget {
 		
 		update_post_cache($pages);
 		
+		$to_cache = array();
+		foreach ( $pages as $page )
+			$to_cache[] = $page->ID;
+		
+		update_postmeta_cache($to_cache);
+		
 		foreach ( $pages as $page ) {
 			$parent = $page;
 			while ( $parent->post_parent )
 				$parent = get_post($parent->post_parent);
-			update_post_meta($page->ID, '_section_id', "$parent->ID");
+			
+			if ( "$parent->ID" !== get_post_meta($page->ID, '_section_id', true) )
+				update_post_meta($page->ID, '_section_id', "$parent->ID");
 		}
 		
 		set_transient('cached_section_ids', 1);
