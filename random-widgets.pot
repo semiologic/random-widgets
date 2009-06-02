@@ -1,0 +1,155 @@
+# Random Widgets pot file.
+# Copyright (C) 2009 Mesoconcepts <http://www.mesoconcepts.com>
+# This file is distributed under the same license as the Random Widgets package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 3.0\n"
+"Report-Msgid-Bugs-To: https://tickets.semiologic.com\n"
+"POT-Creation-Date: 2009-06-02 12:48+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: random-widgets.php:55
+msgid "Random Widgets Error"
+msgstr ""
+
+#: random-widgets.php:56
+#, php-format
+msgid ""
+"Your MySQL version is lower than 4.1. It's time to <a href=\"%s\">change "
+"hosts</a> if yours doesn't want to upgrade."
+msgstr ""
+
+#: random-widgets.php:87
+msgid "Random Widgets"
+msgstr ""
+
+#: random-widgets.php:112
+msgid "Random Posts or Pages."
+msgstr ""
+
+#: random-widgets.php:118
+msgid "Random Widget"
+msgstr ""
+
+#: random-widgets.php:181 random-widgets.php:198 random-widgets.php:215
+msgid "Untitled"
+msgstr ""
+
+#: random-widgets.php:235
+#, php-format
+msgid "%1$s on %2$s"
+msgstr ""
+
+#: random-widgets.php:600
+msgid "Title:"
+msgstr ""
+
+#: random-widgets.php:609
+msgid "Display:"
+msgstr ""
+
+#: random-widgets.php:612 random-widgets.php:627
+msgid "Posts"
+msgstr ""
+
+#: random-widgets.php:614
+msgid "Random Posts / All Categories"
+msgstr ""
+
+#: random-widgets.php:621
+#, php-format
+msgid "Random Posts / %s"
+msgstr ""
+
+#: random-widgets.php:629
+msgid "Random Pages / All Sections"
+msgstr ""
+
+#: random-widgets.php:636
+#, php-format
+msgid "Random Pages / %s"
+msgstr ""
+
+#: random-widgets.php:642
+msgid "Links"
+msgstr ""
+
+#: random-widgets.php:644
+msgid "Random Links / All Categories"
+msgstr ""
+
+#: random-widgets.php:651
+#, php-format
+msgid "Random Links / %s"
+msgstr ""
+
+#: random-widgets.php:657
+msgid "Miscellaneous"
+msgstr ""
+
+#: random-widgets.php:659
+msgid "Random Comments"
+msgstr ""
+
+#: random-widgets.php:662
+msgid "Random Updates"
+msgstr ""
+
+#: random-widgets.php:672
+#, php-format
+msgid "%s Random Items (5-15)"
+msgstr ""
+
+#: random-widgets.php:685
+msgid "Show Descriptions (except for comments)"
+msgstr ""
+
+#: random-widgets.php:699
+msgid "Random Posts"
+msgstr ""
+
+#: widget-utils/widget-utils.php:27
+msgid "This Post In Widgets"
+msgstr ""
+
+#: widget-utils/widget-utils.php:46
+msgid "This Page In Widgets"
+msgstr ""
+
+#: widget-utils/widget-utils.php:113
+msgid "The following fields let you configure options shared by:"
+msgstr ""
+
+#: widget-utils/widget-utils.php:121
+msgid ""
+"It will <b>NOT</b> affect anything else. In particular WordPress's built-in "
+"Pages widget."
+msgstr ""
+
+#: widget-utils/widget-utils.php:128
+msgid "Title"
+msgstr ""
+
+#: widget-utils/widget-utils.php:140
+msgid "Description"
+msgstr ""
+
+#: widget-utils/widget-utils.php:151
+msgid "Exclude"
+msgstr ""
+
+#: widget-utils/widget-utils.php:163
+msgid "Exclude this entry from automatically generated lists"
+msgstr ""
+
+#: widget-utils/widget-utils.php:182
+msgid "... except for silo stubs, silo maps and smart links."
+msgstr ""
