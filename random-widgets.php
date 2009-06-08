@@ -156,9 +156,9 @@ class random_widget extends WP_Widget {
 			case 'pages':
 			case 'updates':
 				$label = get_post_meta($item->ID, '_widgets_label', true);
-				if ( $label === '' )
+				if ( (string) $label === '' )
 					$label = $item->post_title;
-				if ( $label === '' )
+				if ( (string) $label === '' )
 					$label = __('Untitled', 'random-widgets');
 				
 				$link = apply_filters('the_permalink', get_permalink($item->ID));
@@ -175,7 +175,7 @@ class random_widget extends WP_Widget {
 				break;
 			case 'links':
 				$label = $item->link_name;
-				if ( $label === '' )
+				if ( (string) $label === '' )
 					$label = __('Untitled', 'random-widgets');
 				
 				$label = '<a href="' . esc_url($item->link_url) . '"'
@@ -190,9 +190,9 @@ class random_widget extends WP_Widget {
 				break;
 			case 'comments':
 				$post_label = get_post_meta($item->ID, '_widgets_label', true);
-				if ( $post_label === '' )
+				if ( (string) $post_label === '' )
 					$post_label = $item->post_title;
-				if ( $post_label === '' )
+				if ( (string) $post_label === '' )
 					$post_label = __('Untitled', 'random-widgets');
 				
 				$post_link = apply_filters('the_permalink', get_permalink($item->ID));
