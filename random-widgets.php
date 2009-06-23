@@ -6,7 +6,7 @@ Description: WordPress widgets that let you list random posts, pages, links or c
 Version: 3.0 RC
 Author: Denis de Bernardy
 Author URI: http://www.getsemiologic.com
-Text Domain: random-widgets-info
+Text Domain: random-widgets
 Domain Path: /lang
 */
 

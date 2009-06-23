@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 3.0\n"
 "Report-Msgid-Bugs-To: https://tickets.semiologic.com\n"
-"POT-Creation-Date: 2009-06-02 15:37+0200\n"
+"POT-Creation-Date: 2009-06-23 17:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,103 +16,96 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: random-widgets.php:55
-msgid "Random Widgets Error"
-msgstr ""
-
-#: random-widgets.php:56
-#, php-format
-msgid ""
-"Your MySQL version is lower than 4.1. It's time to <a href=\"%s\">change "
-"hosts</a> if yours doesn't want to upgrade."
-msgstr ""
-
-#: random-widgets.php:87
+#: random-widgets.php:68
 msgid "Random Widgets"
 msgstr ""
 
-#: random-widgets.php:112
-msgid "Random Posts or Pages."
+#: random-widgets.php:93
+msgid "Random Posts, Pages, Links or Comments."
 msgstr ""
 
-#: random-widgets.php:118
+#: random-widgets.php:99
 msgid "Random Widget"
 msgstr ""
 
-#: random-widgets.php:181 random-widgets.php:198 random-widgets.php:215
+#: random-widgets.php:170 random-widgets.php:187 random-widgets.php:204
 msgid "Untitled"
 msgstr ""
 
-#: random-widgets.php:235
+#: random-widgets.php:224
 #, php-format
 msgid "%1$s on %2$s"
 msgstr ""
 
-#: random-widgets.php:600
+#: random-widgets.php:588
 msgid "Title:"
 msgstr ""
 
-#: random-widgets.php:609
+#: random-widgets.php:599
 msgid "Display:"
 msgstr ""
 
-#: random-widgets.php:612 random-widgets.php:627
+#: random-widgets.php:602
 msgid "Posts"
 msgstr ""
 
-#: random-widgets.php:614
+#: random-widgets.php:604
 msgid "Random Posts / All Categories"
 msgstr ""
 
-#: random-widgets.php:621
+#: random-widgets.php:611
 #, php-format
 msgid "Random Posts / %s"
 msgstr ""
 
-#: random-widgets.php:629
+#: random-widgets.php:617
+msgid "Pages"
+msgstr ""
+
+#: random-widgets.php:619
 msgid "Random Pages / All Sections"
 msgstr ""
 
-#: random-widgets.php:636
+#: random-widgets.php:626
 #, php-format
 msgid "Random Pages / %s"
 msgstr ""
 
-#: random-widgets.php:642
+#: random-widgets.php:632
 msgid "Links"
 msgstr ""
 
-#: random-widgets.php:644
+#: random-widgets.php:634
 msgid "Random Links / All Categories"
 msgstr ""
 
-#: random-widgets.php:651
+#: random-widgets.php:641
 #, php-format
 msgid "Random Links / %s"
 msgstr ""
 
-#: random-widgets.php:657
+#: random-widgets.php:647
 msgid "Miscellaneous"
 msgstr ""
 
-#: random-widgets.php:659
+#: random-widgets.php:649
 msgid "Random Comments"
 msgstr ""
 
-#: random-widgets.php:662
+#: random-widgets.php:652
 msgid "Random Updates"
 msgstr ""
 
-#: random-widgets.php:672
+#: random-widgets.php:662
 #, php-format
 msgid "%s Random Items"
 msgstr ""
 
-#: random-widgets.php:685
+#: random-widgets.php:675
 msgid "Show Descriptions (except for comments)"
 msgstr ""
 
-#: random-widgets.php:699
+#: random-widgets.php:689
 msgid "Random Posts"
 msgstr ""
 
