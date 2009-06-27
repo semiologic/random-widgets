@@ -785,7 +785,6 @@ class random_widget extends WP_Widget {
 		foreach ( $ops as $k => $o ) {
 			if ( isset($widget_contexts['random-widget-' . $k]) ) {
 				$ops[$k]['widget_contexts'] = $widget_contexts['random-widget-' . $k];
-				unset($widget_contexts['random-widget-' . $k]);
 			}
 		}
 		
