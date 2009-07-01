@@ -790,11 +790,13 @@ class random_widget extends WP_Widget {
 			}
 		}
 		
-		global $wp_filter;
+		global $wp_filter, $_wp_sidebars_widgets;
 		$filter_backup = isset($wp_filter['sidebars_widgets']) ? $wp_filter['sidebars_widgets'] : array();
 		unset($wp_filter['sidebars_widgets']);
+		$_wp_sidebars_widgets = array();
 		$sidebars_widgets = wp_get_sidebars_widgets(false);
 		$wp_filter['sidebars_widgets'] = $filter_backup;
+		$_wp_sidebars_widgets = array();
 		
 		$keys = array_keys($ops);
 		
@@ -811,8 +813,6 @@ class random_widget extends WP_Widget {
 		}
 		
 		wp_set_sidebars_widgets($sidebars_widgets);
-		global $_wp_sidebars_widgets;
-		$_wp_sidebars_widgets = array();
 		
 		return $ops;
 	} # upgrade()
