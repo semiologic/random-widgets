@@ -790,6 +790,7 @@ class random_widget extends WP_Widget {
 			}
 		}
 		
+		# todo: switch
 		global $wp_filter, $_wp_sidebars_widgets;
 		$filter_backup = isset($wp_filter['sidebars_widgets']) ? $wp_filter['sidebars_widgets'] : array();
 		unset($wp_filter['sidebars_widgets']);
@@ -797,6 +798,16 @@ class random_widget extends WP_Widget {
 		$sidebars_widgets = wp_get_sidebars_widgets(false);
 		$wp_filter['sidebars_widgets'] = $filter_backup;
 		$_wp_sidebars_widgets = array();
+		
+		#global $_wp_sidebars_widgets;
+		#if ( is_admin() ) {
+		#	$sidebars_widgets = get_option('sidebars_widgets', array());
+		#} else {
+		#	if ( !$_wp_sidebars_widgets )
+		#		wp_get_sidebars_widgets(false);
+		#	$sidebars_widgets =& $_wp_sidebars_widgets;
+		#}
+		# /todo
 		
 		$keys = array_keys($ops);
 		
@@ -812,7 +823,11 @@ class random_widget extends WP_Widget {
 			}
 		}
 		
+		# todo: switch
 		wp_set_sidebars_widgets($sidebars_widgets);
+		#if ( is_admin() )
+		#	update_option('sidebars_widgets', $sidebars_widgets);
+		# /todo
 		
 		return $ops;
 	} # upgrade()
