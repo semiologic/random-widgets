@@ -174,7 +174,7 @@ class random_widget extends WP_Widget {
 		
 		$title = apply_filters('widget_title', $title);
 		
-		echo $before_widget;
+		echo str_replace('random_widget', 'random_widget random_' . $type, $before_widget);
 		
 		if ( $title )
 			echo $before_title . $title . $after_title;
