@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 3.0\n"
 "Report-Msgid-Bugs-To: https://tickets.semiologic.com\n"
-"POT-Creation-Date: 2009-06-23 17:16+0200\n"
+"POT-Creation-Date: 2009-07-07 23:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,96 +16,96 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: random-widgets.php:68
+#: random-widgets.php:89
 msgid "Random Widgets"
 msgstr ""
 
-#: random-widgets.php:93
+#: random-widgets.php:114
 msgid "Random Posts, Pages, Links or Comments."
 msgstr ""
 
-#: random-widgets.php:99
+#: random-widgets.php:121
 msgid "Random Widget"
 msgstr ""
 
-#: random-widgets.php:170 random-widgets.php:187 random-widgets.php:204
+#: random-widgets.php:194 random-widgets.php:211 random-widgets.php:228
 msgid "Untitled"
 msgstr ""
 
-#: random-widgets.php:224
+#: random-widgets.php:248
 #, php-format
 msgid "%1$s on %2$s"
 msgstr ""
 
-#: random-widgets.php:588
+#: random-widgets.php:612
 msgid "Title:"
 msgstr ""
 
-#: random-widgets.php:599
+#: random-widgets.php:623
 msgid "Display:"
 msgstr ""
 
-#: random-widgets.php:602
+#: random-widgets.php:626
 msgid "Posts"
 msgstr ""
 
-#: random-widgets.php:604
+#: random-widgets.php:628
 msgid "Random Posts / All Categories"
 msgstr ""
 
-#: random-widgets.php:611
+#: random-widgets.php:635
 #, php-format
 msgid "Random Posts / %s"
 msgstr ""
 
-#: random-widgets.php:617
+#: random-widgets.php:641
 msgid "Pages"
 msgstr ""
 
-#: random-widgets.php:619
+#: random-widgets.php:643
 msgid "Random Pages / All Sections"
 msgstr ""
 
-#: random-widgets.php:626
+#: random-widgets.php:650
 #, php-format
 msgid "Random Pages / %s"
 msgstr ""
 
-#: random-widgets.php:632
+#: random-widgets.php:656
 msgid "Links"
 msgstr ""
 
-#: random-widgets.php:634
+#: random-widgets.php:658
 msgid "Random Links / All Categories"
 msgstr ""
 
-#: random-widgets.php:641
+#: random-widgets.php:665
 #, php-format
 msgid "Random Links / %s"
 msgstr ""
 
-#: random-widgets.php:647
+#: random-widgets.php:671
 msgid "Miscellaneous"
 msgstr ""
 
-#: random-widgets.php:649
+#: random-widgets.php:673
 msgid "Random Comments"
 msgstr ""
 
-#: random-widgets.php:652
+#: random-widgets.php:676
 msgid "Random Updates"
 msgstr ""
 
-#: random-widgets.php:662
+#: random-widgets.php:686
 #, php-format
 msgid "%s Random Items"
 msgstr ""
 
-#: random-widgets.php:675
+#: random-widgets.php:699
 msgid "Show Descriptions (except for comments)"
 msgstr ""
 
-#: random-widgets.php:689
+#: random-widgets.php:713
 msgid "Random Posts"
 msgstr ""
 
