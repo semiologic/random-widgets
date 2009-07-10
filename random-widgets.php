@@ -20,7 +20,7 @@ http://www.mesoconcepts.com/license/
 **/
 
 
-load_plugin_textdomain('random-widgets', null, dirname(__FILE__) . '/lang');
+load_plugin_textdomain('random-widgets', false, dirname(plugin_basename(__FILE__)) . '/lang');
 
 if ( !defined('widget_utils_textdomain') )
 	define('widget_utils_textdomain', 'random-widgets');
@@ -111,7 +111,7 @@ class random_widget extends WP_Widget {
 	function random_widget() {
 		$widget_ops = array(
 			'classname' => 'random_widget',
-			'description' => __("Random Posts, Pages, Links or Comments.", 'random-widgets'),
+			'description' => __('Random Posts, Pages, Links or Comments.', 'random-widgets'),
 			);
 		$control_ops = array(
 			'width' => 330,
