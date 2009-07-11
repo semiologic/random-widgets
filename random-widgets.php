@@ -253,7 +253,7 @@ class random_widget extends WP_Widget {
 				. $label;
 				
 			if ( $descr )
-				echo "\n\n" . wpautop($descr);
+				echo "\n\n" . wpautop(apply_filters('widget_text', $descr));
 			
 			echo '</li>' . "\n";
 		}
