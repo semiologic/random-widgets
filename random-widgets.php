@@ -32,13 +32,6 @@ if ( !defined('widget_utils_textdomain') )
  * @package Random Widgets
  **/
 
-add_action('widgets_init', array('random_widget', 'widgets_init'));
-
-foreach ( array('post.php', 'post-new.php', 'page.php', 'page-new.php') as $hook )
-	add_action('load-' . $hook, array('random_widget', 'editor_init'));
-
-add_action('save_post', array('random_widget', 'save_post'));
-
 class random_widget extends WP_Widget {
 	/**
 	 * init()
@@ -819,4 +812,11 @@ class random_widget extends WP_Widget {
 		return $ops;
 	} # upgrade()
 } # random_widget
+
+add_action('widgets_init', array('random_widget', 'widgets_init'));
+
+foreach ( array('post.php', 'post-new.php', 'page.php', 'page-new.php') as $hook )
+	add_action('load-' . $hook, array('random_widget', 'editor_init'));
+
+add_action('save_post', array('random_widget', 'save_post'));
 ?>
