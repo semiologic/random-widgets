@@ -1,9 +1,9 @@
 === Random Widgets ===
-Contributors: Denis-de-Bernardy
+Contributors: Denis-de-Bernardy & Mike Koepke
 Donate link: http://www.semiologic.com/partners/
 Tags: semiologic
-Requires at least: 2.8
-Tested up to: 3.2.1
+Requires at least: 3.1
+Tested up to: 3.5
 Stable tag: trunk
 
 A collection of widgets to list recent posts, pages, comments, and more.
@@ -33,10 +33,15 @@ The [Semiologic forum](http://forum.semiologic.com) is the best place to report 
 == Installation ==
 
 1. Upload the plugin folder to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
+2. Activate the plugin through the 'Plugins' menu in WordPress
 
 
 == Change Log ==
+
+= 3.1 =
+
+- WP 3.5 compat
+- Recoded for removed _get_post_ancestors function
 
 = 3.0.4 =
 
