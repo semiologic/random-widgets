@@ -3,7 +3,7 @@
 Plugin Name: Random Widgets
 Plugin URI: http://www.semiologic.com/software/random-widgets/
 Description: WordPress widgets that let you list random posts, pages, links or comments.
-Version: 3.1
+Version: 3.2
 Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: random-widgets
@@ -34,6 +34,34 @@ if ( !defined('widget_utils_textdomain') )
  **/
 
 class random_widget extends WP_Widget {
+	/**
+	 * random_widget()
+	 *
+	 * @return void
+	 **/
+
+	function random_widget() {
+        add_action('widgets_init', array($this, 'widgets_init'));
+
+        foreach ( array('post.php', 'post-new.php', 'page.php', 'page-new.php') as $hook )
+        	add_action('load-' . $hook, array($this, 'editor_init'));
+
+        add_action('save_post', array($this, 'save_post'));
+
+		$widget_ops = array(
+			'classname' => 'random_widget',
+			'description' => __('Random Posts, Pages, Links or Comments.', 'random-widgets'),
+			);
+		$control_ops = array(
+			'width' => 330,
+			);
+
+		$this->init();
+		$this->WP_Widget('random_widget', __('Random Widget', 'random-widgets'), $widget_ops, $control_ops);
+	} # random_widget()
+
+
+
 	/**
 	 * init()
 	 *
@@ -67,8 +95,8 @@ class random_widget extends WP_Widget {
 		
 		widget_utils::post_meta_boxes();
 		widget_utils::page_meta_boxes();
-		add_action('post_widget_config_affected', array('random_widget', 'widget_config_affected'));
-		add_action('page_widget_config_affected', array('random_widget', 'widget_config_affected'));
+		add_action('post_widget_config_affected', array($this, 'widget_config_affected'));
+		add_action('page_widget_config_affected', array($this, 'widget_config_affected'));
 	} # editor_init()
 	
 	
@@ -94,28 +122,8 @@ class random_widget extends WP_Widget {
 	function widgets_init() {
 		register_widget('random_widget');
 	} # widgets_init()
-	
-	
-	/**
-	 * random_widget()
-	 *
-	 * @return void
-	 **/
 
-	function random_widget() {
-		$widget_ops = array(
-			'classname' => 'random_widget',
-			'description' => __('Random Posts, Pages, Links or Comments.', 'random-widgets'),
-			);
-		$control_ops = array(
-			'width' => 330,
-			);
-		
-		$this->init();
-		$this->WP_Widget('random_widget', __('Random Widget', 'random-widgets'), $widget_ops, $control_ops);
-	} # random_widget()
-	
-	
+
 	/**
 	 * widget()
 	 *
@@ -850,10 +858,5 @@ class random_widget extends WP_Widget {
 	} # upgrade()
 } # random_widget
 
-add_action('widgets_init', array('random_widget', 'widgets_init'));
-
-foreach ( array('post.php', 'post-new.php', 'page.php', 'page-new.php') as $hook )
-	add_action('load-' . $hook, array('random_widget', 'editor_init'));
-
-add_action('save_post', array('random_widget', 'save_post'));
+$random_widget = new random_widget();
 ?>
