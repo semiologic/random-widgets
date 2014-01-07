@@ -3,20 +3,19 @@
 Plugin Name: Random Widgets
 Plugin URI: http://www.semiologic.com/software/random-widgets/
 Description: WordPress widgets that let you list random posts, pages, links or comments.
-Version: 3.2
+Version: 3.3
 Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: random-widgets
 Domain Path: /lang
+License: Dual licensed under the MIT and GPLv2 licenses
 */
 
 /*
 Terms of use
 ------------
 
-This software is copyright Mesoconcepts and is distributed under the terms of the Mesoconcepts license. In a nutshell, you may freely use it for any purpose, but may not redistribute it without written permission.
-
-http://www.mesoconcepts.com/license/
+This software is copyright Denis de Bernardy & Mike Koepke, and is distributed under the terms of the MIT and GPLv2 licenses.
 **/
 
 
@@ -40,7 +39,7 @@ class random_widget extends WP_Widget {
 	 * @return void
 	 **/
 
-	function random_widget() {
+	public function __construct() {
         add_action('widgets_init', array($this, 'widgets_init'));
 
         foreach ( array('post.php', 'post-new.php', 'page.php', 'page-new.php') as $hook )
@@ -729,15 +728,21 @@ class random_widget extends WP_Widget {
 	 **/
 
 	function save_post($post_id) {
-		if ( !get_transient('cached_section_ids') )
+		if ( !get_transient('cached_section_ids') || wp_is_post_revision($post_id) || !current_user_can('edit_post', $post_id) )
 			return;
-		
+
 		$post_id = (int) $post_id;
 		$post = get_post($post_id);
 		
-		if ( $post->post_type != 'page' )
+		if ( $post->post_type != 'page' || $post->post_status != 'publish' || $post->post_status != 'trash' )
 			return;
-		
+
+
+		if ( $post->post_status == 'trash' ) {
+			delete_transient('cached_section_ids');
+			return;
+		}
+
 		$section_id = get_post_meta($post_id, '_section_id', true);
 		$refresh = false;
 		if ( !$section_id ) {
@@ -768,6 +773,8 @@ class random_widget extends WP_Widget {
 					delete_transient('cached_section_ids');
 			} else {
 				# fix corrupt data
+				if ( $section_id )
+					delete_post_meta($post_id, '_section_id');
 				delete_transient('cached_section_ids');
 			}
 		}
@@ -859,4 +866,3 @@ class random_widget extends WP_Widget {
 } # random_widget
 
 $random_widget = new random_widget();
-?>
