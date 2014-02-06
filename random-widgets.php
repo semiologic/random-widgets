@@ -3,7 +3,7 @@
 Plugin Name: Random Widgets
 Plugin URI: http://www.semiologic.com/software/random-widgets/
 Description: WordPress widgets that let you list random posts, pages, links or comments.
-Version: 3.3
+Version: 3.3.1
 Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: random-widgets
@@ -45,7 +45,7 @@ class random_widget extends WP_Widget {
         foreach ( array('post.php', 'post-new.php', 'page.php', 'page-new.php') as $hook )
         	add_action('load-' . $hook, array($this, 'editor_init'));
 
-        add_action('save_post', array($this, 'save_post'));
+        add_action('save_post', array($this, 'save_post'), 15);
 
 		$widget_ops = array(
 			'classname' => 'random_widget',
@@ -728,13 +728,15 @@ class random_widget extends WP_Widget {
 	 **/
 
 	function save_post($post_id) {
-		if ( !get_transient('cached_section_ids') || wp_is_post_revision($post_id) || !current_user_can('edit_post', $post_id) )
+		if ( isset($GLOBALS['sem_id_cache']) || wp_is_post_revision($post_id) || !current_user_can('edit_post', $post_id) )
 			return;
+
+		$GLOBALS['sem_id_cache'] = true;
 
 		$post_id = (int) $post_id;
 		$post = get_post($post_id);
 		
-		if ( $post->post_type != 'page' || $post->post_status != 'publish' || $post->post_status != 'trash' )
+		if ( $post->post_type != 'page' || ( $post->post_status != 'publish' && $post->post_status != 'trash' ) )
 			return;
 
 
