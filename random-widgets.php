@@ -3,7 +3,7 @@
 Plugin Name: Random Widgets
 Plugin URI: http://www.semiologic.com/software/random-widgets/
 Description: WordPress widgets that let you list random posts, pages, links or comments.
-Version: 3.3.1
+Version: 3.4 dev
 Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: random-widgets
@@ -19,8 +19,6 @@ This software is copyright Denis de Bernardy & Mike Koepke, and is distributed u
 **/
 
 
-load_plugin_textdomain('random-widgets', false, dirname(plugin_basename(__FILE__)) . '/lang');
-
 if ( !defined('widget_utils_textdomain') )
 	define('widget_utils_textdomain', 'random-widgets');
 
@@ -28,24 +26,77 @@ if ( !defined('widget_utils_textdomain') )
 /**
  * random_widget
  *
- * @property int|string alt_option_name
  * @package Random Widgets
  **/
 
 class random_widget extends WP_Widget {
+
 	/**
-	 * random_widget()
+	 * Plugin instance.
 	 *
-	 * @return void
-	 **/
+	 * @see get_instance()
+	 * @type object
+	 */
+	protected static $instance = NULL;
 
+	/**
+	 * URL to this plugin's directory.
+	 *
+	 * @type string
+	 */
+	public $plugin_url = '';
+
+	/**
+	 * Path to this plugin's directory.
+	 *
+	 * @type string
+	 */
+	public $plugin_path = '';
+
+	/**
+	 * Access this plugin’s working instance
+	 *
+	 * @wp-hook plugins_loaded
+	 * @return  object of this class
+	 */
+	public static function get_instance()
+	{
+		NULL === self::$instance and self::$instance = new self;
+
+		return self::$instance;
+	}
+
+
+	/**
+	 * Loads translation file.
+	 *
+	 * Accessible to other classes to load different language files (admin and
+	 * front-end for example).
+	 *
+	 * @wp-hook init
+	 * @param   string $domain
+	 * @return  void
+	 */
+	public function load_language( $domain )
+	{
+		load_plugin_textdomain(
+			$domain,
+			FALSE,
+			$this->plugin_path . 'lang'
+		);
+	}
+
+	/**
+	 * Constructor.
+	 *
+	 *
+	 */
 	public function __construct() {
-        add_action('widgets_init', array($this, 'widgets_init'));
+		$this->plugin_url    = plugins_url( '/', __FILE__ );
+		$this->plugin_path   = plugin_dir_path( __FILE__ );
+		$this->load_language( 'random-widgets' );
 
-        foreach ( array('post.php', 'post-new.php', 'page.php', 'page-new.php') as $hook )
-        	add_action('load-' . $hook, array($this, 'editor_init'));
-
-        add_action('save_post', array($this, 'save_post'), 15);
+		add_action( 'plugins_loaded', array ( $this, 'init' ) );
 
 		$widget_ops = array(
 			'classname' => 'random_widget',
@@ -55,11 +106,8 @@ class random_widget extends WP_Widget {
 			'width' => 330,
 			);
 
-		$this->init();
 		$this->WP_Widget('random_widget', __('Random Widget', 'random-widgets'), $widget_ops, $control_ops);
-	} # random_widget()
-
-
+	}
 
 	/**
 	 * init()
@@ -79,9 +127,17 @@ class random_widget extends WP_Widget {
 				}
 			}
 		}
+
+		// more stuff: register actions and filters
+		add_action('widgets_init', array($this, 'widgets_init'));
+
+		foreach ( array('post.php', 'post-new.php', 'page.php', 'page-new.php') as $hook )
+			add_action('load-' . $hook, array($this, 'editor_init'));
+
+		add_action('save_post', array($this, 'save_post'), 15);
 	} # init()
-	
-	
+
+
 	/**
 	 * editor_init()
 	 *
@@ -90,7 +146,7 @@ class random_widget extends WP_Widget {
 
 	function editor_init() {
 		if ( !class_exists('widget_utils') )
-			include dirname(__FILE__) . '/widget-utils/widget-utils.php';
+			include $this->plugin_path . '/widget-utils/widget-utils.php';
 		
 		widget_utils::post_meta_boxes();
 		widget_utils::page_meta_boxes();
@@ -867,4 +923,4 @@ class random_widget extends WP_Widget {
 	} # upgrade()
 } # random_widget
 
-$random_widget = new random_widget();
+$random_widget = random_widget::get_instance();
