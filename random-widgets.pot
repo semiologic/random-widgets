@@ -1,116 +1,111 @@
-# Random Widgets pot file.
-# Copyright (C) 2009 Mesoconcepts <http://www.mesoconcepts.com>
+# Copyright (C) 2014 Random Widgets
 # This file is distributed under the same license as the Random Widgets package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.0.2\n"
-"Report-Msgid-Bugs-To: https://tickets.semiologic.com\n"
-"POT-Creation-Date: 2009-12-12 19:36+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Project-Id-Version: Random Widgets 3.4\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/random-widgets\n"
+"POT-Creation-Date: 2014-05-02 15:04:26+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: 8bit\n"
 
-#: random-widgets-info.php:2 random-widgets.php:82
+#. #-#-#-#-#  random-widgets.pot (Random Widgets 3.4)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: random-widgets-info.php:2 random-widgets.php:166
 msgid "Random Widgets"
 msgstr ""
 
+#. #-#-#-#-#  random-widgets.pot (Random Widgets 3.4)  #-#-#-#-#
+#. Description of the plugin/theme
 #: random-widgets-info.php:3
 msgid ""
 "WordPress widgets that let you list random posts, pages, links or comments."
 msgstr ""
 
-#: random-widgets.php:107
+#: random-widgets.php:103
 msgid "Random Posts, Pages, Links or Comments."
 msgstr ""
 
-#: random-widgets.php:114
+#: random-widgets.php:109
 msgid "Random Widget"
 msgstr ""
 
-#: random-widgets.php:187 random-widgets.php:204 random-widgets.php:221
+#: random-widgets.php:251 random-widgets.php:268 random-widgets.php:285
 msgid "Untitled"
 msgstr ""
 
-#: random-widgets.php:241
-#, php-format
+#: random-widgets.php:305
 msgid "%1$s on %2$s"
 msgstr ""
 
-#: random-widgets.php:605
+#: random-widgets.php:669
 msgid "Title:"
 msgstr ""
 
-#: random-widgets.php:616
+#: random-widgets.php:680
 msgid "Display:"
 msgstr ""
 
-#: random-widgets.php:619
+#: random-widgets.php:683
 msgid "Posts"
 msgstr ""
 
-#: random-widgets.php:621
+#: random-widgets.php:685
 msgid "Random Posts / All Categories"
 msgstr ""
 
-#: random-widgets.php:628
-#, php-format
+#: random-widgets.php:692
 msgid "Random Posts / %s"
 msgstr ""
 
-#: random-widgets.php:634
+#: random-widgets.php:698
 msgid "Pages"
 msgstr ""
 
-#: random-widgets.php:636
+#: random-widgets.php:700
 msgid "Random Pages / All Sections"
 msgstr ""
 
-#: random-widgets.php:643
-#, php-format
+#: random-widgets.php:707
 msgid "Random Pages / %s"
 msgstr ""
 
-#: random-widgets.php:649
+#: random-widgets.php:713
 msgid "Links"
 msgstr ""
 
-#: random-widgets.php:651
+#: random-widgets.php:715
 msgid "Random Links / All Categories"
 msgstr ""
 
-#: random-widgets.php:658
-#, php-format
+#: random-widgets.php:722
 msgid "Random Links / %s"
 msgstr ""
 
-#: random-widgets.php:664
+#: random-widgets.php:728
 msgid "Miscellaneous"
 msgstr ""
 
-#: random-widgets.php:666
+#: random-widgets.php:730
 msgid "Random Comments"
 msgstr ""
 
-#: random-widgets.php:669
+#: random-widgets.php:733
 msgid "Random Updates"
 msgstr ""
 
-#: random-widgets.php:679
-#, php-format
+#: random-widgets.php:743
 msgid "%s Random Items"
 msgstr ""
 
-#: random-widgets.php:692
+#: random-widgets.php:756
 msgid "Show Descriptions (except for comments)"
 msgstr ""
 
-#: random-widgets.php:706
+#: random-widgets.php:770
 msgid "Random Posts"
 msgstr ""
 
@@ -150,4 +145,16 @@ msgstr ""
 
 #: widget-utils/widget-utils.php:182
 msgid "... except for silo stubs, silo maps and smart links."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.semiologic.com/software/random-widgets/"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Denis de Bernardy & Mike Koepke"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.getsemiologic.com"
 msgstr ""

@@ -3,7 +3,7 @@ Contributors: Denis-de-Bernardy & Mike_Koepke
 Donate link: http://www.semiologic.com/partners/
 Tags: semiologic
 Requires at least: 3.1
-Tested up to: 3.8
+Tested up to: 3.9
 Stable tag: trunk
 
 A collection of widgets to list recent posts, pages, comments, and more.
@@ -41,6 +41,7 @@ The [Semiologic forum](http://forum.semiologic.com) is the best place to report 
 = 3.4 =
 
 - Code refactoring
+- WP 3.9 compat
 
 = 3.3.1 =
 
